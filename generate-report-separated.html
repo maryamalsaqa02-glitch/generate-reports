@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Generate report – Smart Warehouse</title>
+  <link rel="stylesheet" href="./generate-report-separated.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="slot s24"><img data-icon="warehouse-mark" alt=""></div>
+      <p class="brand-name"><span class="w">Smart</span> <span class="grad">Warehouse</span></p>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-group">
+        <div class="group-heading">OPERATIONS</div>
+        <a class="nav-item" href="../dashboard%20admin/dash.html"><span class="slot s13"><img data-icon="layout-dashboard" alt=""></span><span class="label">Dashboard</span></a>
+        <a class="nav-item" href="../Alerts/alerts.html"><span class="slot s13"><img data-icon="bell-nav" alt=""></span><span class="label">Alerts</span><span class="count"><span data-count-en="5">5</span></span></a>
+        <a class="nav-item" href="../Inventory/Inventory.html"><span class="slot s13"><img data-icon="box-nav" alt=""></span><span class="label">Inventory</span></a>
+        <button class="nav-item" type="button"><span class="slot s13"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2v12M6 2v12M10 2v12M13 2v12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span><span class="label">Products</span></button>
+      </div>
+      <div class="nav-group">
+        <div class="group-heading">PLANNING</div>
+        <a class="nav-item" href="../AI%20forecast1/ai.html"><span class="slot s13"><img data-icon="trending-up" alt=""></span><span class="label">AI forecast</span></a>
+        <a class="nav-item" href="../purchase%20orders/index%20(15).html"><span class="slot s13"><img data-icon="clipboard-list" alt=""></span><span class="label">Purchase orders</span><span class="count"><span data-count-en="6">6</span></span></a>
+        <a class="nav-item" href="../suppliers/suppliers.html"><span class="slot s13"><img data-icon="truck-nav" alt=""></span><span class="label">Suppliers</span></a>
+        <a class="nav-item active" href="generate-report%20%2810%29.html"><span class="slot s13"><img data-icon="chart-no-axes-column" alt=""></span><span class="label">Reports</span></a>
+      </div>
+    </nav>
+
+    <div class="account">
+      <div class="avatar" data-manager-initials>WM</div>
+      <div class="user">
+        <p class="name">Warehouse Ma...</p>
+        <p class="role">Manager</p>
+      </div>
+      <button class="users-btn" id="usersButton" aria-label="Users" type="button">
+        <span class="slot s18 users-icon"><img data-icon="users-outline" alt=""></span>
+        <span class="slot s14 users-badge"><img data-icon="user-count-badge" alt=""></span>
+        <span class="users-count">5</span>
+      </button>
+    </div>
+  </aside>
+
+    <section class="users-popup" id="usersPopup" aria-label="Active users" aria-hidden="true">
+    <header class="users-popup-head"><div><strong data-popup-title>Active users</strong><span class="users-popup-sub" data-popup-sub>Signed in to the website</span></div><span class="active-count"><i></i><b id="activeUsersCount">5 online</b></span></header>
+    <div class="users-popup-list" id="usersPopupList"></div>
+    <div class="users-custom-scrollbar" aria-hidden="true"><div class="users-custom-scrollbar-thumb"></div></div>
+    <button class="users-popup-manager" type="button" id="managerProfile"><span class="popup-avatar manager-avatar" data-manager-initials>WM</span><span class="popup-person"><strong data-manager-name>Warehouse Manager</strong><small data-popup-role>Admin</small></span><span class="popup-signout" role="img" aria-label="Sign out"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12 3H5.5A1.5 1.5 0 0 0 4 4.5v11A1.5 1.5 0 0 0 5.5 17H12M10 10h7m0 0-3-3m3 3-3 3"/></svg></span></button>
+  </section>  <!-- Main -->
+  <main class="content">
+    <header class="topbar">
+      <div class="title">
+        <h1>Generate report</h1>
+        <p>Choose what to include, then generate</p>
+      </div>
+      <div class="tools">
+        <div class="search-wrap">
+          <label class="search">
+            <span class="slot s13"><img data-icon="search" alt=""></span>
+            <input type="text" placeholder="Search products, SKUs..." aria-label="Search" autocomplete="off">
+          </label>
+        </div>
+        <div class="lang" role="group" aria-label="Language">
+          <button class="lang-opt active" data-lang="en">English</button>
+          <button class="lang-opt" data-lang="ar" dir="auto">العربية</button>
+        </div>
+        <button class="bell" aria-label="Notifications"><span class="slot s15"><img data-icon="bell-header" alt=""></span></button>
+        <button class="btn-cancel" id="cancel">Cancel</button>
+      </div>
+    </header>
+
+    <div class="columns">
+      <div class="left">
+
+        <!-- 1. Report type -->
+        <section class="card type-card">
+          <h2>1. Report type</h2>
+          <div class="report-options" role="radiogroup" aria-label="Report type">
+            <label class="report-option selected" data-name="Inventory Summary" data-size="~1,248 products · about 12 pages">
+              <input type="radio" name="report" value="inventory" checked>
+              <span class="r-icon" style="background:#eef2fb"><span class="slot s18"><img data-icon="box-report" alt=""></span></span>
+              <span class="r-text"><b>Inventory Summary</b><span>Products, stock levels and values</span></span>
+              <span class="radio" aria-hidden="true"></span>
+            </label>
+            <label class="report-option" data-name="Stock Movement" data-size="~3,420 movements · about 18 pages">
+              <input type="radio" name="report" value="movement">
+              <span class="r-icon" style="background:#e0f3ea"><span class="slot s18"><img data-icon="truck-report" alt=""></span></span>
+              <span class="r-text"><b>Stock Movement</b><span>Items received and shipped</span></span>
+              <span class="radio" aria-hidden="true"></span>
+            </label>
+            <label class="report-option short" data-name="Low Stock &amp; Reorder" data-size="~86 products · about 3 pages">
+              <input type="radio" name="report" value="low">
+              <span class="r-icon" style="background:#fff6e8"><span class="slot s18"><img data-icon="bell-report-low" alt=""></span></span>
+              <span class="r-text"><b>Low Stock &amp; Reorder</b><span>Products below minimum stock</span></span>
+              <span class="radio" aria-hidden="true"></span>
+            </label>
+            <label class="report-option short" data-name="Supplier Performance" data-size="~24 suppliers · about 6 pages">
+              <input type="radio" name="report" value="supplier">
+              <span class="r-icon" style="background:#eef2fb"><span class="slot s20"><img data-icon="file-text-supplier" alt=""></span></span>
+              <span class="r-text"><b>Supplier Performance</b><span>On-time delivery and accuracy</span></span>
+              <span class="radio" aria-hidden="true"></span>
+            </label>
+            <label class="report-option short faint" data-name="AI Demand Forecast" data-size="~312 forecasts · about 8 pages">
+              <input type="radio" name="report" value="forecast">
+              <span class="r-icon" style="background:#fbe6e3"><span class="slot s18"><img data-icon="file-text-forecast" alt=""></span></span>
+              <span class="r-text"><b>AI Demand Forecast</b><span>Predicted stock-outs</span></span>
+              <span class="radio" aria-hidden="true"></span>
+            </label>
+            <label class="report-option short faint" data-name="Camera Detections" data-size="~960 detections · about 10 pages">
+              <input type="radio" name="report" value="camera">
+              <span class="r-icon" style="background:#e0f3ea"><span class="slot s18"><img data-icon="bell-report-camera" alt=""></span></span>
+              <span class="r-text"><b>Camera Detections</b><span>Detections per camera</span></span>
+              <span class="radio" aria-hidden="true"></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- 2. Period -->
+        <section class="card period-card">
+          <h2>2. Period</h2>
+          <div class="pills" role="group" aria-label="Period">
+            <button class="pill" data-range="7">Last 7 days</button>
+            <button class="pill active" data-range="30">Last 30 days</button>
+            <button class="pill" data-range="quarter">This quarter</button>
+            <button class="pill" data-range="custom">Custom range</button>
+          </div>
+          <div class="date-row">
+            <div class="field">
+              <label for="from">From</label>
+              <input class="input" id="from" type="text" readonly>
+            </div>
+            <div class="field">
+              <label for="to">To</label>
+              <input class="input" id="to" type="text" readonly>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Format and options -->
+        <section class="card format-card">
+          <h2>3. Format and options</h2>
+          <div class="output">
+            <div class="format-settings">
+              <div class="format-select">
+                <span class="field-label">Format</span>
+                <div class="segmented" role="group" aria-label="Format">
+                  <button class="seg active" data-format="PDF">PDF</button>
+                  <button class="seg" data-format="Excel">Excel</button>
+                </div>
+              </div>
+              <label class="check"><input type="checkbox" id="opt-charts" checked><span class="box"><span class="slot s13"><img data-icon="check" alt=""></span></span><span>Include charts</span></label>
+              <label class="check"><input type="checkbox" id="opt-details" checked><span class="box"><span class="slot s13"><img data-icon="check" alt=""></span></span><span>Include product details</span></label>
+              <label class="check"><input type="checkbox" id="opt-group"><span class="box"><span class="slot s13"><img data-icon="check" alt=""></span></span><span>Group by category</span></label>
+            </div>
+            <div class="scope-settings">
+              <div class="field">
+                <label for="category">Category</label>
+                <div class="select">
+                  <select id="category" class="input" aria-hidden="true" tabindex="-1"><option value="All categories">All categories</option><option value="Electronics">Electronics</option><option value="Groceries">Groceries</option><option value="Clothing">Clothing</option></select>
+                  <span class="slot s14 chev"><img data-icon="chevron-down" alt=""></span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="zone">Zone</label>
+                <div class="select">
+                  <select id="zone" class="input" aria-hidden="true" tabindex="-1"><option value="All zones">All zones</option><option value="Zone A · Receiving">Zone A · Receiving</option><option value="Zone B · Cold storage">Zone B · Cold storage</option><option value="Zone C · Bulk storage">Zone C · Bulk storage</option><option value="Zone D · Shipping">Zone D · Shipping</option></select>
+                  <span class="slot s14 chev"><img data-icon="chevron-down" alt=""></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Summary -->
+      <aside class="card summary">
+        <h2>Summary</h2>
+        <div class="summary-details">
+          <div class="row"><span class="k">Report</span><b id="s-report">Inventory Summary</b></div>
+          <div class="row"><span class="k">Period</span><b id="s-period">15 Sep – 15 Oct</b></div>
+          <div class="row"><span class="k">Format</span><b id="s-format">PDF</b></div>
+          <div class="row"><span class="k">Includes</span><b id="s-includes">Charts, product details</b></div>
+          <div class="row"><span class="k">Size</span><b id="s-size">~1,248 products · about 12 pages</b></div>
+        </div>
+        <div class="actions">
+          <label class="check"><input type="checkbox" id="email"><span class="box"><span class="slot s13"><img data-icon="check" alt=""></span></span><span>Email me a copy</span></label>
+          <button class="btn-generate" id="generate">Generate report</button>
+          <button class="btn-schedule" id="schedule">Schedule this report</button>
+          <p class="hint" id="hint">Takes about 10 seconds. You will find it in Recent reports.</p>
+        </div>
+      </aside>
+    </div>
+    <footer class="page-footer">© 2027 Smart Warehouse. All rights reserved.</footer>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+
+
+  <script src="./generate-report-separated.js"></script>
+</body>
+</html>
